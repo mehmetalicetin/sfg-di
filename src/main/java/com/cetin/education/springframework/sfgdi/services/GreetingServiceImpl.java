@@ -1,0 +1,12 @@
+package com.cetin.education.springframework.sfgdi.services;
+
+/**
+ * @Author mehmetali.cetin
+ * @Date 2022-06-30
+ */
+public class GreetingServiceImpl implements GreetingService {
+    @Override
+    public String sayGreeting() {
+        return "Hello Folks!";
+    }
+}
