@@ -1,6 +1,9 @@
 package com.cetin.education.springframework.sfgdi;
 
 import com.cetin.education.springframework.sfgdi.controller.MyController;
+import com.cetin.education.springframework.sfgdi.services.ConstructorInjectedController;
+import com.cetin.education.springframework.sfgdi.services.PropertyInjectedController;
+import com.cetin.education.springframework.sfgdi.services.SetterInjectedController;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ApplicationContext;
@@ -17,6 +20,26 @@ public class SfgDiApplication {
 		System.out.println(greetings);
 		//I'm not a creating new object there, I'm asking to spring provide me object there.
 		//This is fundamental tenants of Dependency Injection is to have framework doing.
+
+
+		System.out.println("----------  Dependency Injection by Spring Framework  -----------");
+
+		//Dependency Injection by Spring Framework
+		//Spring is going to provide that needed object for you.
+
+		System.out.println("----------  Property Injection ----------------------------------");
+		PropertyInjectedController propertyInjectedController = context.getBean(PropertyInjectedController.class);
+		System.out.println(propertyInjectedController.getGreeting());
+
+
+
+		System.out.println("----------  Setter Injection ------------------------------------");
+		SetterInjectedController setterInjectedController = context.getBean(SetterInjectedController.class);
+		System.out.println(setterInjectedController.getGreeting());
+
+		System.out.println("----------  Constructor Injection -------------------------------");
+		ConstructorInjectedController constructorInjectedController = context.getBean(ConstructorInjectedController.class);
+		System.out.println(constructorInjectedController.getGreeting());
 	}
 
 }
