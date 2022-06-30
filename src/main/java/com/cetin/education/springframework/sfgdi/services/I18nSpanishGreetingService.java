@@ -8,7 +8,7 @@ import org.springframework.stereotype.Service;
  * @Date 2022-06-30
  */
 @Service("I18nService")
-@Profile("ES")
+@Profile({"ES", "default"})
 public class I18nSpanishGreetingService implements GreetingService{
     @Override
     public String sayGreeting() {
