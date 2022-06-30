@@ -3,8 +3,6 @@ package com.cetin.education.springframework.sfgdi.services;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.*;
-
 /**
  * @Author mehmetali.cetin
  * @Date 2022-06-30
@@ -16,7 +14,7 @@ class PropertyInjectedControllerTest {
     @BeforeEach
     void setUp() {
         propertyInjectedController = new PropertyInjectedController();
-        propertyInjectedController.greetingService = new GreetingServiceImpl();
+        propertyInjectedController.greetingService = new PropertyServiceImpl();
     }
 
     @Test

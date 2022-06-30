@@ -3,8 +3,6 @@ package com.cetin.education.springframework.sfgdi.services;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.*;
-
 /**
  * @Author mehmetali.cetin
  * @Date 2022-06-30
@@ -14,7 +12,7 @@ class ConstructorInjectedControllerTest {
 
     @BeforeEach
     void setUp() {
-        constructorInjectedController = new ConstructorInjectedController(new GreetingServiceImpl());
+        constructorInjectedController = new ConstructorInjectedController(new ConstructorServiceImpl());
     }
 
     @Test
