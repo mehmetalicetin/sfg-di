@@ -1,5 +1,6 @@
 package com.cetin.education.springframework.sfgdi.controller;
 
+import com.cetin.education.springframework.sfgdi.services.GreetingService;
 import org.springframework.stereotype.Controller;
 
 /**
@@ -7,10 +8,14 @@ import org.springframework.stereotype.Controller;
  * @Date 2022-06-29
  */
 @Controller
-public class MyController {
+public class MyController{
+    private final GreetingService greetingService;
 
-    public String sayHello(){
-        System.out.println("Say Hello!!");
-        return "Hey folks!";
+    public MyController(GreetingService greetingService) {
+        this.greetingService = greetingService;
+    }
+
+    public String sayGreeting() {
+        return greetingService.sayGreeting();
     }
 }

@@ -1,5 +1,6 @@
-package com.cetin.education.springframework.sfgdi.services;
+package com.cetin.education.springframework.sfgdi.controller;
 
+import com.cetin.education.springframework.sfgdi.services.GreetingService;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
 
