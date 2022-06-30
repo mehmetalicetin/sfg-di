@@ -1,9 +1,6 @@
 package com.cetin.education.springframework.sfgdi;
 
-import com.cetin.education.springframework.sfgdi.controller.MyController;
-import com.cetin.education.springframework.sfgdi.controller.ConstructorInjectedController;
-import com.cetin.education.springframework.sfgdi.controller.PropertyInjectedController;
-import com.cetin.education.springframework.sfgdi.controller.SetterInjectedController;
+import com.cetin.education.springframework.sfgdi.controller.*;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ApplicationContext;
@@ -39,6 +36,10 @@ public class SfgDiApplication {
 		System.out.println("----------  Constructor Injection -------------------------------");
 		ConstructorInjectedController constructorInjectedController = context.getBean(ConstructorInjectedController.class);
 		System.out.println(constructorInjectedController.getGreeting());
+
+		System.out.println("----------  Profiles --------------------------------------------");
+		I18nController i18nController = context.getBean(I18nController.class);
+		System.out.println(i18nController.sayHello());
 	}
 
 }
