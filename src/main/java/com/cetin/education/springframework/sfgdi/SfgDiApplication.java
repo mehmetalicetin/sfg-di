@@ -40,6 +40,12 @@ public class SfgDiApplication {
 		System.out.println("----------  Profiles --------------------------------------------");
 		I18nController i18nController = context.getBean(I18nController.class);
 		System.out.println(i18nController.sayHello());
+
+
+		System.out.println("----------  Homework-4------------------------------------------");
+		PetController petController = context.getBean("petController", PetController.class);
+		System.out.println("--- The Best Pet is ---");
+		System.out.println(petController.whichPetIsTheBest());
 	}
 
 }
