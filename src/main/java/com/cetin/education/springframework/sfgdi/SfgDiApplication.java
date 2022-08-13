@@ -4,7 +4,9 @@ import com.cetin.education.springframework.sfgdi.controller.*;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ApplicationContext;
+import org.springframework.context.annotation.ComponentScan;
 
+@ComponentScan(basePackages = {"com.cetin.education.springframework.pets", "com.cetin.education.springframework.sfgdi"})
 @SpringBootApplication
 public class SfgDiApplication {
 

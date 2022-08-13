@@ -1,6 +1,6 @@
 package com.cetin.education.springframework.sfgdi.controller;
 
-import com.cetin.education.springframework.sfgdi.services.PetService;
+import com.cetin.education.springframework.pets.PetService;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
 
