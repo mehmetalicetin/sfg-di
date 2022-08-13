@@ -19,16 +19,21 @@ import org.springframework.context.annotation.Profile;
 @Configuration
 public class GreetingServiceConfig {
 
+    @Bean
+    PetServiceFactory petServiceFactory(){
+        return new PetServiceFactory();
+    }
+
     @Profile({"dog","default"})
     @Bean("petservice")
-    DogPetService dogPetService(){
-        return new DogPetService();
+    PetService dogPetService(PetServiceFactory petServiceFactory){
+        return petServiceFactory.getPetService("dog");
     }
 
     @Profile("cat")
     @Bean("petservice")
-    CatPetService catPetService(){
-        return new CatPetService();
+    PetService catPetService(PetServiceFactory petServiceFactory){
+        return petServiceFactory.getPetService("cat");
     }
 
     @Profile({"ES"})

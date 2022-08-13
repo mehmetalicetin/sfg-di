@@ -6,7 +6,8 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.ComponentScan;
 
-@ComponentScan(basePackages = {"com.cetin.education.springframework.pets", "com.cetin.education.springframework.sfgdi"})
+//@ComponentScan(basePackages = {"com.cetin.education.springframework.pets", "com.cetin.education.springframework.sfgdi"})
+//DI java configuration tarafından bean ile yonetiliyor.
 @SpringBootApplication
 public class SfgDiApplication {
 
