@@ -1,5 +1,9 @@
 package com.cetin.education.springframework.sfgdi.config;
 
+import com.cetin.education.springframework.pets.CatPetService;
+import com.cetin.education.springframework.pets.DogPetService;
+import com.cetin.education.springframework.pets.PetService;
+import com.cetin.education.springframework.pets.PetServiceFactory;
 import com.cetin.education.springframework.sfgdi.repositories.EnglishGreetingServiceRepository;
 import com.cetin.education.springframework.sfgdi.repositories.EnglishGreetingServiceRepositoryImpl;
 import com.cetin.education.springframework.sfgdi.services.*;
@@ -7,7 +11,6 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Primary;
 import org.springframework.context.annotation.Profile;
-import org.springframework.stereotype.Service;
 
 /**
  * @Author mehmetali.cetin
@@ -16,16 +19,33 @@ import org.springframework.stereotype.Service;
 @Configuration
 public class GreetingServiceConfig {
 
-    @Profile({"ES", "default"})
+    @Profile({"dog","default"})
+    @Bean("petservice")
+    DogPetService dogPetService(){
+        return new DogPetService();
+    }
+
+    @Profile("cat")
+    @Bean("petservice")
+    CatPetService catPetService(){
+        return new CatPetService();
+    }
+
+    @Profile({"ES"})
     @Bean("I18nService")
     I18nSpanishGreetingService i18nSpanishGreetingService(){
         return new I18nSpanishGreetingService();
     }
 
-    @Profile("EN")
+    @Bean
+    EnglishGreetingServiceRepository englishGreetingServiceRepository(){
+        return new EnglishGreetingServiceRepositoryImpl();
+    }
+
+    @Profile({"EN", "default"})
     @Bean("I18nService")
-    I18nEnglishGreetingService i18nEnglishGreetingService(){
-        return new I18nEnglishGreetingService();
+    I18nEnglishGreetingService i18nEnglishGreetingService(EnglishGreetingServiceRepository englishGreetingServiceRepository){
+        return new I18nEnglishGreetingService(englishGreetingServiceRepository);
     }
 
     @Primary
