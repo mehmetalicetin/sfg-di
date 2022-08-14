@@ -1,10 +1,13 @@
 package com.cetin.education.springframework.sfgdi;
 
 import com.cetin.education.springframework.sfgdi.controller.*;
+import com.cetin.education.springframework.sfgdi.services.PrototypeBean;
+import com.cetin.education.springframework.sfgdi.services.SingletonBean;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.ComponentScan;
+import org.springframework.context.annotation.Profile;
 
 //@ComponentScan(basePackages = {"com.cetin.education.springframework.pets", "com.cetin.education.springframework.sfgdi"})
 //DI java configuration tarafından bean ile yonetiliyor.
@@ -49,6 +52,16 @@ public class SfgDiApplication {
 		PetController petController = context.getBean("petController", PetController.class);
 		System.out.println("--- The Best Pet is ---");
 		System.out.println(petController.whichPetIsTheBest());
+
+		SingletonBean singletonBean1 = context.getBean(SingletonBean.class);
+		singletonBean1.getMyScope();
+		SingletonBean singletonBean2 = context.getBean(SingletonBean.class);
+		singletonBean2.getMyScope();
+
+		PrototypeBean prototypeBean1 = context.getBean(PrototypeBean.class);
+		prototypeBean1.getMyScope();
+		PrototypeBean prototypeBean2 = context.getBean(PrototypeBean.class);
+		prototypeBean2.getMyScope();
 	}
 
 }
