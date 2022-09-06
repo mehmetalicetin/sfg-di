@@ -4,20 +4,30 @@ import com.cetin.education.springframework.pets.CatPetService;
 import com.cetin.education.springframework.pets.DogPetService;
 import com.cetin.education.springframework.pets.PetService;
 import com.cetin.education.springframework.pets.PetServiceFactory;
+import com.cetin.education.springframework.sfgdi.datasource.FakeDataSource;
 import com.cetin.education.springframework.sfgdi.repositories.EnglishGreetingServiceRepository;
 import com.cetin.education.springframework.sfgdi.repositories.EnglishGreetingServiceRepositoryImpl;
 import com.cetin.education.springframework.sfgdi.services.*;
-import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.Configuration;
-import org.springframework.context.annotation.Primary;
-import org.springframework.context.annotation.Profile;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.boot.context.properties.EnableConfigurationProperties;
+import org.springframework.context.annotation.*;
 
 /**
  * @Author mehmetali.cetin
  * @Date 2022-08-13
  */
 @Configuration
+@EnableConfigurationProperties(SfgConstructorConfiguration.class)
 public class GreetingServiceConfig {
+
+    @Bean
+    FakeDataSource fakeDataSource(SfgConstructorConfiguration sfgConstructorConfiguration){
+        FakeDataSource fakeDataSource = new FakeDataSource();
+        fakeDataSource.setUsername(sfgConstructorConfiguration.getUsername());
+        fakeDataSource.setPassword(sfgConstructorConfiguration.getPassword());
+        fakeDataSource.setJdbcurl(sfgConstructorConfiguration.getJdbcurl());
+        return fakeDataSource;
+    }
 
     @Bean
     PetServiceFactory petServiceFactory(){

@@ -1,6 +1,9 @@
 package com.cetin.education.springframework.sfgdi;
 
+import com.cetin.education.springframework.sfgdi.config.SfgConfiguration;
+import com.cetin.education.springframework.sfgdi.config.SfgConstructorConfiguration;
 import com.cetin.education.springframework.sfgdi.controller.*;
+import com.cetin.education.springframework.sfgdi.datasource.FakeDataSource;
 import com.cetin.education.springframework.sfgdi.services.PrototypeBean;
 import com.cetin.education.springframework.sfgdi.services.SingletonBean;
 import org.springframework.boot.SpringApplication;
@@ -53,6 +56,8 @@ public class SfgDiApplication {
 		System.out.println("--- The Best Pet is ---");
 		System.out.println(petController.whichPetIsTheBest());
 
+
+		System.out.println("----------  Spring Bean Scopes------------------------------------------");
 		SingletonBean singletonBean1 = context.getBean(SingletonBean.class);
 		singletonBean1.getMyScope();
 		SingletonBean singletonBean2 = context.getBean(SingletonBean.class);
@@ -62,6 +67,31 @@ public class SfgDiApplication {
 		prototypeBean1.getMyScope();
 		PrototypeBean prototypeBean2 = context.getBean(PrototypeBean.class);
 		prototypeBean2.getMyScope();
+
+
+		System.out.println("---------------------Spring Properties-------------------");
+
+		System.out.println("-----------Fake DataSource--------------");
+		FakeDataSource fakeDataSource = context.getBean(FakeDataSource.class);
+		StringBuilder stringBuilder = new StringBuilder();
+		stringBuilder.append(fakeDataSource.getUsername()).append(" -- ")
+						.append(fakeDataSource.getPassword()).append(" -- ")
+						.append(fakeDataSource.getJdbcurl());
+		System.out.println(stringBuilder);
+
+
+		System.out.println("-------------- Config Properties Bean ----------------");
+		SfgConfiguration sfgConfiguration = context.getBean(SfgConfiguration.class);
+		System.out.println(sfgConfiguration.getUsername());
+		System.out.println(sfgConfiguration.getPassword());
+		System.out.println(sfgConfiguration.getJdbcurl());
+
+
+		System.out.println("-------------- Config Constructor Properties Bean ----------------");
+		SfgConstructorConfiguration sfgConstructorConfiguration = context.getBean(SfgConstructorConfiguration.class);
+		System.out.println(sfgConstructorConfiguration.getUsername());
+		System.out.println(sfgConstructorConfiguration.getPassword());
+		System.out.println(sfgConstructorConfiguration.getJdbcurl());
 	}
 
 }
