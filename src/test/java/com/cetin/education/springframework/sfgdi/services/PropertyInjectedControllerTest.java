@@ -1,6 +1,7 @@
 package com.cetin.education.springframework.sfgdi.services;
 
-import com.cetin.education.springframework.sfgdi.controller.PropertyInjectedController;
+import com.cetin.sg.springframework.sfgdi.controller.PropertyInjectedController;
+import com.cetin.sg.springframework.sfgdi.services.PropertyServiceImpl;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 

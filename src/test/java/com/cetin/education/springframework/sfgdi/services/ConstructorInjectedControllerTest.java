@@ -1,6 +1,7 @@
 package com.cetin.education.springframework.sfgdi.services;
 
-import com.cetin.education.springframework.sfgdi.controller.ConstructorInjectedController;
+import com.cetin.sg.springframework.sfgdi.controller.ConstructorInjectedController;
+import com.cetin.sg.springframework.sfgdi.services.ConstructorServiceImpl;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
